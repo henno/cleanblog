@@ -34,7 +34,7 @@ while ($row = mysqli_fetch_assoc($q)) {
 
                 <div class="post-preview">
 
-                    <a href="post.php">
+                    <a href="?page=post&id=<?= $post['post_id'] ?>">
                         <h2 class="post-title"><?= $post['post_title'] ?></h2>
 
                         <h3 class="post-subtitle"><?= $post['post_description'] ?></h3>
