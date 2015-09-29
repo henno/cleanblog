@@ -1,4 +1,7 @@
 <?
+// Set timezone
+date_default_timezone_set('Europe/Tallinn');
+
 
 // Save wall clock time at the start of the script
 $page_load_start = microtime(1);
@@ -9,9 +12,16 @@ require 'include/database.php';
 
 
 // Set page
-$page = !empty($_GET['page']) && file_exists("pages/$_GET[page].php") ? $_GET['page'] : 'home';
+$page = !empty($_GET['page']) ? $_GET['page'] : 'home';
 
-// Include required page
+
+// Include controller, if it exists
+if (file_exists("controllers/$page.php")) {
+    require "controllers/$page.php";
+}
+
+
+// Include template
 require "templates/master_template.php";
 
 
